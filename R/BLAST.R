@@ -16,7 +16,7 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-blast  <- function(db = NULL, type = "blastn") {
+blast  <- function(db = NULL, type = "blastp") {
   if(is.null(db)) stop("No BLAST database specified!")
   db <- file.path(normalizePath(dirname(db)), basename(db))
   if(length(Sys.glob(paste(db, "*", sep="")))<1) stop("BLAST database does not exit!")
@@ -44,7 +44,7 @@ print.BLAST <- function(x, info=TRUE, ...) {
   }
 }
 
-blast_help <- function(type = "blastn") {
+blast_help <- function(type = "blastp") {
   system(paste(.findExecutable(c(type)), "-help"))
 }
 
